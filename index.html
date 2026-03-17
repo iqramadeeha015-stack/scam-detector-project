@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>WhatsApp Scam Call Detector</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>WhatsApp Scam Call Detector</h1>
+
+<form method="POST">
+
+<input type="text" name="number" placeholder="Enter phone number with country code" required>
+
+<br>
+
+<button type="submit">Check Number</button>
+
+</form>
+
+{% if result %}
+
+<h2 class="result">Result: {{ result }}</h2>
+
+{% endif %}
+
+<h3>Recent Searches</h3>
+
+<table>
+
+<tr>
+<th>Phone Number</th>
+<th>Status</th>
+</tr>
+
+{% for row in history %}
+
+<tr>
+<td>{{ row[0] }}</td>
+<td>{{ row[1] }}</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+</body>
+
+</html>
